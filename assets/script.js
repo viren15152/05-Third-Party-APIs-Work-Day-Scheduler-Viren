@@ -6,14 +6,22 @@ dayjs.locale(localeSettings);
 
 $(function () {
 //This will get the current hour of the day using the dayjs library 
-  const currentHour = dayj().format('H');
-//This function will allow the colours of each time block to change weather it is in the past, present or future corresponding to the current hour
+  const currentHour = dayjs().format('H');
+//This function will allow the colours of each time block to change weather it is in the past, present or future corresponding to the current hour (Functions are one of the fundemental building blocks in JavaScript they are a reusable set of statements to perform a task or calculate a value)
   function hourlyColor() {
     $('.time-block').each(function() {
       const blockHour =parseInt(this.id);
       $(this).toggleClass('past', blockHour < currentHour);
       $(this).toggleClass('present', blockHour === currentHour);
       $(this).toggleClass('future', blockHour > currentHour);
+    });
+  }
+  //I've implemented the next function to allow the user to save their inputs into local storage
+  function textEntry() {
+    $('.saveBtn').on('click', function() {
+      const key = $(this).parent().attr('id');
+      const value = $(this).siblings('.description').val();
+      localStorage.setItem(key, value);
     });
   }
   //This function will refresh the colour of each time block dependant on wheather the time interval is in the past(grey), present(red) or future(green) relative to the current time.
