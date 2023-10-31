@@ -4,7 +4,7 @@
 I have created a Work Day Planner web application to allow the user to plan out their work day. It allows the user to update the page so they can view all of their upcoming appointments for the day. It provides the user with an easy to use interface that indicates what events are in the past future and present.
 
 ## Visuals:
-Screenshot:
+Screenshot: ADD Screenshot and Deployed Link 
 
 ## Technology Used:
 HTML5

@@ -21,7 +21,14 @@ $(function () {
     $('.saveBtn').on('click', function() {
       const key = $(this).parent().attr('id');
       const value = $(this).siblings('.description').val();
-      localStorage.setItem(key, value);
+   //I have included error handling for any situations when local storage is not available for or when setting items fail.
+      try {
+        localStorage.setItem(key, value);
+        console.log('Data saved succesfully.');
+      } catch (error) {
+        console.error('Error saving data:', error);
+      }
+      
     });
   }
   //This function will allow me to refresh the colour of each time block dependant on wheather the time interval is in the past(grey), present(red) or future(green) in correspondence  to the current time.
@@ -29,7 +36,7 @@ $(function () {
     $('.time-block').each(function() {
       const blockHour = parseInt(this.id);
       //If statement to specify a block of JavaScript code to be executed if the condition is true.
-      if (blockHour == currentHour) {
+      if (blockHour === currentHour) {
         $(this).removeClass('past future').addClass('present');
         //This else if statement to specify a new condition if the first condition is false.
       } else if (blockHour < currentHour) {
