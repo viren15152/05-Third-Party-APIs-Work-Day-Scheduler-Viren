@@ -24,14 +24,17 @@ $(function () {
       localStorage.setItem(key, value);
     });
   }
-  //This function will refresh the colour of each time block dependant on wheather the time interval is in the past(grey), present(red) or future(green) relative to the current time.
+  //This function will allow me to refresh the colour of each time block dependant on wheather the time interval is in the past(grey), present(red) or future(green) in correspondence  to the current time.
   function refreshColor() {
     $('.time-block').each(function() {
       const blockHour = parseInt(this.id);
+      //If statement to specify a block of JavaScript code to be executed if the condition is true.
       if (blockHour == currentHour) {
         $(this).removeClass('past future').addClass('present');
+        //This else if statement to specify a new condition if the first condition is false.
       } else if (blockHour < currentHour) {
         $(this).removeClass('future present').addClass('past');
+        //This else statement to specify a block of code to be executed if the condition is false.
       } else {
         $(this).removeClass('past present').addClass('future');
       }
@@ -58,7 +61,7 @@ $(function () {
   hourlyColor();
   textEntry();
   refreshColor();
-//Using setInterval will update the time once per second for the current time.
+//I have used setInterval as this will update the time once per second for the current time.
 
   setInterval(updateTime, 1000);
 });
