@@ -64,10 +64,20 @@ $(function () {
     timeElement.text(currentTime);
   }
 
+  //This function will determine the closest time block based on the current time.
+  const closestBlock = Math.floor(currentHour);
+
+  $('.time-block').each(function() {
+    const blockHour = parseInt(this.id.replace('hour-', ''));
+    $(this).toggleClass('past', blockHour < closestBlock);
+    $(this).toggleClass('present', blockHour === closestBlock);
+    $(this).toggleClass('future', blockHour > closestBlock);
+  });
+
   //This area will allow me to call my 3 main functions to set up the page.
   hourlyColor();
   textEntry();
-  refreshColor();
+  refreshColor(); 
 //I have used setInterval as this will update the time once per second for the current time.
 
   setInterval(updateTime, 1000);
