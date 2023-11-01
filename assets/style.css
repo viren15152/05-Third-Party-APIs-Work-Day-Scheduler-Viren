@@ -1,4 +1,4 @@
-/* Starter code (No changes have been made to the CSS) */
+/* Starter code */
 
 body {
   font-family: 'Open Sans', sans-serif;
@@ -17,9 +17,11 @@ textarea {
 .description {
   white-space: pre-wrap;
 }
-
+/* Added padding-left: 0px and padding left: 0px so that the background colours fit accordingly */
 .time-block {
   border-radius: 15px;
+  padding-left: 0px;
+  padding-right: 0px;
 }
 
 .row {
