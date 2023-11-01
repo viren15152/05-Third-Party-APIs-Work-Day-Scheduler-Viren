@@ -10,7 +10,7 @@ $(function () {
 //This function will allow the colours of each time block to change weather it is in the past, present or future corresponding to the current hour (Functions are one of the fundemental building blocks in JavaScript they are a reusable set of statements to perform a task or calculate a value)
   function hourlyColor() {
     $('.time-block').each(function() {
-      const blockHour =parseInt(this.id);
+      const blockHour = parseInt(this.id);
       $(this).toggleClass('past', blockHour < currentHour);
       $(this).toggleClass('present', blockHour === currentHour);
       $(this).toggleClass('future', blockHour > currentHour);
