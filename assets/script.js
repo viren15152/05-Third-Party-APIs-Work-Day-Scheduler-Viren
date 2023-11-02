@@ -34,7 +34,7 @@ $(function () {
   //This function will allow me to refresh the colour of each time block dependant on wheather the time interval is in the past(grey), present(red) or future(green) in correspondence  to the current time.
   function refreshColor() {
     $('.time-block').each(function() {
-      const blockHour = parseInt(this.id.replace('hour', ''));
+      const blockHour = parseInt(this.id.replace('hour-', ''));
       //If statement to specify a block of JavaScript code to be executed if the condition is true.
       if (blockHour === currentHour) {
         $(this).removeClass('past future').addClass('present');
@@ -74,10 +74,22 @@ $(function () {
     $(this).toggleClass('future', blockHour > closestBlock);
   });
 
-  //This area will allow me to call my 3 main functions to set up the page.
+  function displayAppointments() {
+    $('.time-block').each(function() {
+      const key = $(this).attr('id');
+      const value = localStorage.getItem(key);
+      if (value) {
+        $(this).find('description').val(value);
+      }
+    });
+  }
+
+  //This area will allow me to call my main functions to set up the page.
   hourlyColor();
   textEntry();
   refreshColor(); 
+  updateTime();
+  displayAppointments();
 //I have used setInterval as this will update the time once per second for the current time.
 
   setInterval(updateTime, 1000);
