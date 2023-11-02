@@ -35,7 +35,7 @@ $(function () {
   function refreshColor() {
     $('.time-block').each(function() {
       const blockHour = parseInt(this.id.replace('hour-', ''));
-      //If statement to specify a block of JavaScript code to be executed if the condition is true.
+      //If statement to specify a block of JavaScript code to be executed if the condition is true. === Strict Equality Operator.
       if (blockHour === currentHour) {
         $(this).removeClass('past future').addClass('present');
         //This else if statement to specify a new condition if the first condition is false.
